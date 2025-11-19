@@ -55,24 +55,40 @@ Verbose Mode: Use the --verbose flag to see detailed logs of tool calls, token u
 ```bash
 python main.py "List all files in the current directory" --verbose
 ```
+## ⚙️ Configuration
 
-Configuration
-The agent operates within a specific "working directory" to prevent modification of system files.
+The agent is configured to operate within a specific **working directory** to enforce security and prevent unintentional modification of system files.
 
-Default Working Directory: ./calculator
+### Working Directory
 
-This is currently configured in functions/call_function.py.
+| Setting | Value | Location |
+| :--- | :--- | :--- |
+| **Default Working Directory** | `./calculator` | `functions/call_function.py` |
 
-Architecture
-main.py: The entry point. Initializes the GenAI client and manages the interaction loop.
+The working directory acts as a sandbox, ensuring all file operations are contained within this project's scope.
 
-functions/: Contains the tool implementations available to the LLM.
+---
 
-get_files_info.py: Lists directory contents.
+## 🏗️ Architecture
 
-get_file_content.py: Reads file text.
+The agent's architecture is modular, separating the main interaction loop from the tool implementations (functions) available to the Large Language Model (LLM).
 
-write_file.py: Writes content to the filesystem.
+### Core Components
+
+* **`main.py`**
+    * This is the **entry point** of the application.
+    * It handles the initialization of the GenAI client and manages the **main interaction loop** with the user/system.
+
+* **`functions/` Directory**
+    * This directory contains all the **tool implementations** (functions) that the LLM can call to interact with the environment.
+
+### Available Tools (LLM Functions)
+
+| File Name | Description |
+| :--- | :--- |
+| `get_files_info.py` | Lists the contents and structure of the directories within the working directory. |
+| `get_file_content.py` | Reads and returns the textual content of a specified file. |
+| `write_file.py` | Writes or updates content to a specified file within the working directory. |
 
 run_python_file.py: Executes Python files in a subprocess.
 
