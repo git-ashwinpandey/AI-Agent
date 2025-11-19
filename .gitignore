@@ -1,0 +1,28 @@
+## 🐍 Python-Specific Files ##
+
+# Byte-compiled / optimized /
+# and generated files
+__pycache__/
+*.py[co]
+*.lock
+
+# Distribution / Packaging
+build/
+dist/
+wheels/
+*.egg-info
+
+## 💻 Environment & Configuration ##
+
+# Virtual Environments
+.venv/
+.env
+
+# Python Version Management
+.python-version
+
+## 🍏 OS-Specific Files ##
+
+# macOS
+.DS_Store
+calculator/.DS_Store
